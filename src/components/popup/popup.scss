@@ -1,0 +1,121 @@
+@import '../../var.scss';
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background-color: rgba(37, 37, 37, 0.7);
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    padding: 50px 10px;
+    transition: opacity ease-in-out $animSpeed;
+
+    opacity: 0;
+    pointer-events: none;
+
+    @media (max-width: 1200px) {
+        padding-top: calc(20px + (50 - 20) * ((100vw - 320px) / (1200 - 320)));
+        padding-bottom: calc(20px + (50 - 20) * ((100vw - 320px) / (1200 - 320)));
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        border-radius: 16px;
+        background-color: $white;
+        border: 1px solid transparent;
+
+        overflow: hidden;
+
+        padding: 18px 30px;
+
+        max-width: 500px;
+        width: 100%;
+        transform: translateY(-50px);
+
+        min-height: 200px;
+        height: 40vh;
+
+        transition: background-color ease-in-out $animSpeed, border ease-in-out $animSpeed, transform ease-in-out $animSpeed;
+    }
+
+    &__title {
+        margin: 0 auto;
+
+        font-size: 24px;
+        font-family: Kanit;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $dark;
+
+        transition: color ease-in-out $animSpeed;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        gap: 25px;
+    }
+
+    &__buttons {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        padding: 8px 22px;
+        border-radius: 5px;
+        height: 38px;
+        cursor: pointer;
+
+        font-size: 18px;
+        font-family: Kanit;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        &_stroke {
+            border: 1px solid $purple;
+            background-color: transparent;
+            color: $purple;
+            transition: color ease-in-out $animSpeed, background-color ease-in-out $animSpeed;
+
+            &:hover {
+                background-color: $purple;
+                color: $white;
+            }
+        }
+
+        &_filled {
+            border: 1px solid $purple;
+            background-color: $purple;
+            color: $white;
+            transition: color ease-in-out $animSpeed, background-color ease-in-out $animSpeed;
+
+            &:hover {
+                background-color: $dark-purple;
+            }
+        }
+    }
+}
+.popup.opened {
+    opacity: 1;
+    pointer-events: all;
+
+    .popup__card {
+        transform: translateY(0px);
+    }
+}
