@@ -1,0 +1,77 @@
+@import '../../var.scss';
+
+.field {
+    position: relative;
+    width: 100%;
+    @media (max-width: 480px) {
+        flex-shrink: 0;
+    }
+
+    &__input {
+        position: relative;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #6C63FF;
+        border-radius: 5px;
+        padding: 0 46px;
+        background-color: $white;
+
+        font-family: Inter;
+        font-weight: 500;
+        font-size: 16px;
+        color: $purple;
+        height: 40px;
+        outline: 3px solid transparent;
+        transition: outline ease $animSpeed, border ease-in-out $animSpeed, color ease-in-out $animSpeed, background-color ease-in-out $animSpeed;
+
+        &::placeholder {
+            color: #C3C1E5;
+            transition: color ease-in-out $animSpeed;
+        }
+
+        &:focus {
+            outline: 3px solid #6C63FF66;
+        }
+
+        &_p {
+            padding: 0 16px;
+        }
+    }
+
+    &__button {
+        background-color: transparent;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 12px;
+        width: 21px;
+        height: 21px;
+
+        path {
+            transition: fill ease-in-out $animSpeed;
+        }
+    }
+}
+
+.cross-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: auto;
+    right: 12px !important;
+    width: 22px;
+    cursor: pointer;
+    path {
+        stroke: $purple;
+        transition: fill ease-in-out $animSpeed;
+    }
+}
+
+textarea {
+    display: block;
+    resize: vertical;
+    padding: 11px 16px !important;
+    min-height: 45px;
+    max-height: 210px;
+}
