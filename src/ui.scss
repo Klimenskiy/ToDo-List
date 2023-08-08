@@ -1,0 +1,132 @@
+@import './var.scss';
+
+[class*="__container"] {
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+[class*="__container-small"] {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+body {
+    font-size: 16px;
+    height: 100%;
+}
+
+button, a, div {
+    -webkit-tap-highlight-color: transparent;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wrapper {
+    position: relative;
+    flex: 1 1 auto;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    overflow: auto;
+  
+    transition: background-color ease-in-out $animSpeed;
+}
+  
+.wrapper.dark {
+    background-color: $dark;
+  
+    .header__title {
+        color: $white;
+    }
+    .field__input {
+        background-color: $dark;
+        border: 1px solid $white;
+        color: $white;
+    
+        &::placeholder {
+            color: #666666;
+        }
+        &:focus {
+            outline: 3px solid #FFFFFF66;
+        }
+    }
+    .field__button {
+        path {
+            fill: $white;
+        }
+    }
+    .cross-icon {
+        path {
+            stroke: $white;
+        }
+    }
+
+    .note {
+        &__text, &__input {
+            color: $white;
+        }
+
+        &_checked {
+            .note__text {
+    
+                &::after {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+    .note-actions {
+        &__button {
+            path {
+                stroke: #CDCDCD;
+            }
+
+            &_edit {
+                &:hover {
+                    path {
+                        stroke: $purple;
+                    }
+                }
+            }
+            &_rm {
+                &:hover {
+                    path {
+                        stroke: #E50000;
+                    }
+                }
+            }
+        }
+    }
+    .list__container-small {
+        &::before {
+            background-color: $dark;
+        }
+    }
+    .popup {
+        &__card {
+            background-color: $dark;
+            border: 1px solid $white;
+        }
+        &__title {
+            color: $white;
+        }
+    } 
+
+    .empty__message {
+        color: $white;
+    }
+}
