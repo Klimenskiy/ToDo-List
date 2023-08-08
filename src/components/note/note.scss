@@ -1,0 +1,188 @@
+@import '../../var.scss';
+
+.note {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding: 17px 0;
+    border-top: 1px solid rgba(108, 99, 255, 0.5);
+
+    &_checked {
+        .note__text {
+            opacity: .5;
+            text-decoration: line-through;
+        }
+        .note__checkbox {
+            &::before, &::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__checkbox {
+        width: 26px;
+        height: 26px;
+        border-radius: 2px;
+        border: 1px solid $purple;
+        flex-shrink: 0;
+        cursor: pointer;
+
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $purple;
+
+            opacity: 0;
+            transition: opacity ease-in-out $animSpeed;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            height: 7px;
+            width: 14px;
+            top: 40%;
+            left: 52%;
+            transform: translate(-50%, -50%) rotate(-46deg);
+            border-left: 2px solid $white;
+            border-bottom: 2px solid $white;
+
+            opacity: 0;
+            transition: opacity ease-in-out $animSpeed;
+        }
+    }
+
+    &__text, &__input {
+        font-size: 20px;
+        font-family: Kanit;
+        font-weight: 500;
+        line-height: 130%;
+        color: $dark;
+        display: flex;
+
+
+        transition: color ease-in-out $animSpeed, opacity ease-in-out $animSpeed;
+        cursor: pointer;
+        user-select: none;
+
+        position: relative;
+    }
+    &__input {
+        background-color: transparent;
+        width: 100%;
+        height: 26px;
+    }
+
+    @media (min-width: 991.98px) {
+        &:hover {
+            .note-actions {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.note-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 10px;
+    padding: 0 8px;
+    transition: opacity ease-in-out $animSpeed;
+
+    @media (min-width: 991.98px) {
+        opacity: 0;
+    }
+
+    &__button {
+        background-color: transparent;
+        width: 18px;
+        height: 18px;
+
+        path {
+            stroke: #999;
+            transition: stroke ease-in-out $animSpeed;
+        }
+
+        &_edit {
+            &:hover {
+                path {
+                    stroke: $purple;
+                }
+            }
+            display: flex;
+
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                height: 7px;
+                width: 14px;
+                top: 40%;
+                left: 52%;
+                transform: translate(-50%, -50%) rotate(-46deg);
+                border-left: 3px solid $purple;
+                border-bottom: 3px solid $purple;
+    
+                opacity: 0;
+                transition: opacity ease-in-out $animSpeed;
+            }
+        }
+        &_rm {
+            &:hover {
+                path {
+                    stroke: #E50000;
+                }
+            }
+
+            position: relative;
+            &::before {
+                content: '';
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 16px;
+                height: 3px;
+                transform: rotate(45deg) translate(6px, 3px);
+                background-color: #E50000;
+                opacity: 0;
+                transition: opacity ease-in-out $animSpeed;
+            }
+            &::after {
+                content: '';
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 16px;
+                height: 3px;
+                transform: rotate(-45deg) translate(-3px, 6px);
+                background-color: #E50000;
+                opacity: 0;
+                transition: opacity ease-in-out $animSpeed;
+            }
+        }
+    }
+}
+.note-actions.visible {
+    opacity: 1;
+
+    .note-actions__button_state1 {
+        pointer-events: none;
+        z-index: -10;
+    }
+
+    .note-actions__button {
+        svg {
+            opacity: 0;
+        }
+        &::after, &::before {
+            opacity: 1;
+        }
+    }
+}
