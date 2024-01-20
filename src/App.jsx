@@ -13,7 +13,6 @@ import useDarkScheme from './hooks/useDarkScheme.jsx';
 import crossIcon from './img/icons/cross.svg'
 import Empty from './components/empty';
 
-
 const options = [
   { value: 'all', label: 'All' },
   { value: 'complete', label: 'Complete' },
